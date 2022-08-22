@@ -13,10 +13,8 @@ class BusinessNews extends StatelessWidget {
     return BlocConsumer<NewsCubit,NewsStates>(
       listener: (context, state){},
       builder: (context,state){
-        var cubit = NewsCubit.get(context).businessList;
-        return ListView.separated(itemBuilder: (context,index)=>buildArticleItem(cubit[index])
-            , separatorBuilder: (context,index)=>myDivider(),
-            itemCount: 7);
+        var list = NewsCubit.get(context).businessList;
+        return buildArticle(list);
       },
     );
   }

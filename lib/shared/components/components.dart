@@ -67,4 +67,8 @@ Widget myDivider() => Padding(
   ),
 );
 
+Widget buildArticle(list) => ListView.separated(itemBuilder: (context,index)=>buildArticleItem(list[index])
+, separatorBuilder: (context,index)=>myDivider(),
+itemCount: list.length);
+
 

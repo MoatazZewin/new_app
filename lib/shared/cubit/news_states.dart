@@ -12,3 +12,23 @@ class NewsGetBusinessErorrState extends NewsStates{
 
   NewsGetBusinessErorrState(this.erorr);
 }
+
+class NewsGeTSportsLoadingState extends NewsStates{}
+
+class NewsGeTSportsSuccessState extends NewsStates{}
+
+class NewsGetSportsErorrState extends NewsStates{
+  final String erorr;
+
+  NewsGetSportsErorrState(this.erorr);
+}
+
+class NewsGeTScienceLoadingState extends NewsStates{}
+
+class NewsGeTScienceSuccessState extends NewsStates{}
+
+class NewsGetScienceErorrState extends NewsStates{
+  final String erorr;
+
+  NewsGetScienceErorrState(this.erorr);
+}
