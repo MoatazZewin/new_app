@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-Widget buildArticleItem(Map artical) =>Padding(
+Widget buildArticleItem(Map artical, context) =>Padding(
   padding: EdgeInsets.all(20.0),
   child: Row(
     mainAxisSize: MainAxisSize.max,
@@ -31,11 +31,8 @@ Widget buildArticleItem(Map artical) =>Padding(
             children: [
               Expanded(
                 child: Text("${artical["title"]}",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  maxLines: 4,
+                  style: Theme.of(context).textTheme.bodyText1,
+                  maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -67,7 +64,7 @@ Widget myDivider() => Padding(
   ),
 );
 
-Widget buildArticle(list) => ListView.separated(itemBuilder: (context,index)=>buildArticleItem(list[index])
+Widget buildArticle(list, context) => ListView.separated(itemBuilder: (context,index)=>buildArticleItem(list[index], context)
 , separatorBuilder: (context,index)=>myDivider(),
 itemCount: list.length);
 

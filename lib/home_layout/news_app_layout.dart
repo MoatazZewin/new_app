@@ -8,34 +8,37 @@ class NewsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DioHelper.init();
-    return BlocProvider(
-      create: (BuildContext context) =>NewsCubit()..getBusiness() ,
-      child: BlocConsumer<NewsCubit,NewsStates>(
-        listener: (context, state){},
-        builder: (context,state){
-          var cubit = NewsCubit.get(context);
-          return Scaffold(
-            appBar: AppBar(
-              title: Text("NewsApp"),
-              actions: [
-                Icon(Icons.search),
-              ],
-            ),
-            body: cubit.screens[cubit.currentIndex],
-            bottomNavigationBar: BottomNavigationBar(
-              items: cubit.bottomNavigationItemsList,
-              currentIndex: cubit.currentIndex,
-              onTap: (index){
-                cubit.changeBottomNavBar(index);
+    return BlocConsumer<NewsCubit,NewsStates>(
+      listener: (context, state){},
+      builder: (context,state){
+        var cubit = NewsCubit.get(context);
+        return Scaffold(
+          appBar: AppBar(
+            title: Text("NewsApp"),
+            actions: [
+              IconButton(onPressed: (){
+
               },
-            ),
+                  icon: Icon(Icons.search)),
+              IconButton(onPressed: (){
+                cubit.changeMode();
+              },
+                  icon: Icon(Icons.brightness_4)),
+            ],
+          ),
+          body: cubit.screens[cubit.currentIndex],
+          bottomNavigationBar: BottomNavigationBar(
+            items: cubit.bottomNavigationItemsList,
+            currentIndex: cubit.currentIndex,
+            onTap: (index){
+              cubit.changeBottomNavBar(index);
+              print("the list of bussiness${cubit.businessList}");
+            },
+          ),
 
-          );
-        }
-            ,
-      ),
-
+        );
+      }
+          ,
     );
   }
 }

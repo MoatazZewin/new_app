@@ -6,12 +6,14 @@ import 'package:new_app/modules/science_news/science_screen.dart';
 import 'package:new_app/modules/setting/setting_screen.dart';
 import 'package:new_app/modules/sport_news/sport_screen.dart';
 import 'package:new_app/shared/cubit/news_states.dart';
+import 'package:new_app/shared/network/local/cash_helper.dart';
 import 'package:new_app/shared/network/remote/dio/dio_helper.dart';
 
 class NewsCubit extends Cubit<NewsStates> {
   NewsCubit() : super(NewsInitalState());
   int currentIndex = 0;
   List businessList = [];
+  bool isDark = false;
   static NewsCubit get(context) => BlocProvider.of(context);
   List<BottomNavigationBarItem> bottomNavigationItemsList = [
     BottomNavigationBarItem(
@@ -131,5 +133,19 @@ class NewsCubit extends Cubit<NewsStates> {
         }
 
 
+  }
+
+  void changeMode({bool? fromShared})
+  {
+    if(fromShared != null)
+      {
+        isDark=fromShared;
+      }else
+        {
+          isDark = !isDark;
+          CashHelper.putBool(key: "isDark", value: isDark);
+        }
+
+    emit(NewsGeTChangeModeState());
   }
 }

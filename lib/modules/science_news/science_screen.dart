@@ -13,7 +13,7 @@ class ScienceNews extends StatelessWidget {
       listener: (context, state){},
       builder: (context,state){
         var list = NewsCubit.get(context).scienceList;
-        return buildArticle(list);
+        return buildArticle(list, context);
       },
     );
   }
