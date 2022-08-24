@@ -34,19 +34,19 @@ class NewsCubit extends Cubit<NewsStates> {
       ),
       label: "Science",
     ),
-    BottomNavigationBarItem(
-      icon: Icon(
-        Icons.settings,
-      ),
-      label: "Setting",
-    ),
+    // BottomNavigationBarItem(
+    //   icon: Icon(
+    //     Icons.settings,
+    //   ),
+    //   label: "Setting",
+    // ),
   ];
 
   List screens = [
     BusinessNews(),
     SportNews(),
     ScienceNews(),
-    Setting(),
+    // Setting(),
   ];
 
   void changeBottomNavBar(index)
@@ -147,5 +147,22 @@ class NewsCubit extends Cubit<NewsStates> {
         }
 
     emit(NewsGeTChangeModeState());
+  }
+  
+  List search = [];
+  void getSearch(value)
+  {
+    emit(NewsGeTSearchLoadingState());
+    DioHelper.get('/v2/everything',
+        {
+      'q':'$value',
+      'apiKey':'5942752f848449d18161f5c842dcbcc8',
+    }).then((value) {
+      search = value.data['articles'];
+      emit(NewsGeTSearchSuccessState());
+    }).catchError((onError){
+      print(onError.toString());
+      emit(NewsGetSearchErorrState(onError.toString()));
+    });
   }
 }

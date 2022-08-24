@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:new_app/modules/search/search_screen.dart';
 import 'package:new_app/shared/cubit/news_cubit.dart';
 import 'package:new_app/shared/cubit/news_states.dart';
 import 'package:new_app/shared/network/remote/dio/dio_helper.dart';
@@ -17,7 +18,7 @@ class NewsApp extends StatelessWidget {
             title: Text("NewsApp"),
             actions: [
               IconButton(onPressed: (){
-
+                Navigator.push(context, MaterialPageRoute(builder:(context)=> SearchScreen()));
               },
                   icon: Icon(Icons.search)),
               IconButton(onPressed: (){

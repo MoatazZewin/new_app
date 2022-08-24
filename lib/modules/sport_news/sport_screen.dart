@@ -13,7 +13,7 @@ class SportNews extends StatelessWidget {
       listener: (context, state){},
       builder: (context,state){
         var list = NewsCubit.get(context).sportsList;
-        return buildArticle(list, context);
+        return list.length > 0 ? buildArticle(list, context): Center(child: CircularProgressIndicator()) ;
       },
     );
   }

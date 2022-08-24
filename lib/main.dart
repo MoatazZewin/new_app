@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
+              primarySwatch: Colors.deepOrange,
               textTheme: TextTheme(
                 bodyText1: TextStyle(
                   fontSize: 18.0,
@@ -74,6 +75,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
             darkTheme: ThemeData(
+              primarySwatch: Colors.deepOrange,
               textTheme: TextTheme(
                 bodyText1: TextStyle(
                     fontSize: 18.0,
