@@ -1,6 +1,6 @@
 # new_app
 
-new_app is a sample app to display news from newsapi
+new_app is a sample app to display news from newsapi Support dark mode
 
 ## Libraries and tools
 flutter_bloc
